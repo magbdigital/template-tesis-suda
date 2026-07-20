@@ -1,0 +1,131 @@
+%---------------------------------------
+% Codificación e idioma
+%---------------------------------------
+\usepackage[T1]{fontenc}
+% \usepackage[utf8]{inputenc} % Innecesario en compilaodres modernos (LaTeX post-2018 / Tectonic), UTF-8 es nativo.
+\usepackage[spanish,es-tabla]{babel}
+
+%---------------------------------------
+% Márgenes del documento
+%---------------------------------------
+\usepackage[
+  letterpaper,
+  left=3cm,        % 3 cm a la izquierda para encuadernación
+  right=2.5cm,     % 2.5 cm a la derecha
+  top=2.5cm,       % 2.5 cm arriba
+  bottom=2.5cm     % 2.5 cm abajo
+]{geometry}
+
+%---------------------------------------
+% Fuente Times New Roman
+%---------------------------------------
+\usepackage{newtxtext,newtxmath}
+
+%---------------------------------------
+% Espaciado y párrafos
+%---------------------------------------
+\usepackage{setspace}
+\onehalfspacing % O \doublespacing si la universidad te exige interlineado doble estricto
+
+\usepackage{indentfirst}
+\setlength{\parindent}{1.27cm} % Sangría de primera línea
+\setlength{\parskip}{0pt}      % Sin espacio extra entre párrafos (estándar académico)
+
+%---------------------------------------
+% Tipografía y Alineación
+%---------------------------------------
+\usepackage{microtype}
+\usepackage{ragged2e}
+
+\AtBeginDocument{
+  \justifying
+}
+
+%---------------------------------------
+% Bibliografía
+%---------------------------------------
+
+\usepackage[
+  backend=biber,
+  style=apa
+]{biblatex}
+
+% Cargamos el archivo .bib (reemplaza 'database.bib' por el nombre exacto de tu archivo)
+\addbibresource{database.bib}
+%---------------------------------------
+% Tablas
+%---------------------------------------
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{longtable}
+\usepackage{caption}
+
+%---------------------------------------
+% Figuras
+%---------------------------------------
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subcaption} % 'subcaption' reemplaza al paquete obsoleto 'subfigure'
+\usepackage{epstopdf}
+
+%---------------------------------------
+% Matemáticas y Encabezados
+%---------------------------------------
+\usepackage{bm}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % Limpia todos los encabezados y pies de página actuales
+
+% Quitamos la línea horizontal del encabezado
+\renewcommand{\headrulewidth}{0pt} 
+
+% Colocamos el número de página al centro del pie de página
+\rhead{\thepage}
+%---------------------------------------
+% Formato de títulos
+%---------------------------------------
+\usepackage{titlesec}
+
+\titleformat{\chapter}[hang]
+  {\centering\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries} % \centering al inicio
+  {\thechapter.}              % Etiqueta (ej: 1., 2.)
+  {0.5em}                     % Espacio entre el número y el título
+  {}
+
+  % 2. Formato para Secciones (\section) a 12pt
+\titleformat{\section}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}
+  {\thesection}
+  {1em}
+  {}
+
+% 3. Formato para Subsecciones (\subsection) a 12pt
+\titleformat{\subsection}
+  {\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}
+  {\thesubsection}
+  {1em}
+  {}
+
+% 2. Controlamos los espacios alrededor del título
+% SINTAXIS: \titlespacing*{comando}{izquierda}{espacio_arriba}{espacio_abajo}
+\titlespacing*{\chapter}{0pt}{-1.5cm}{15pt}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+\titlespacing*{\subsection}{0pt}{10pt}{4pt}
+
+%---------------------------------------
+% Hipervínculos
+%---------------------------------------
+\usepackage[
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=black,
+  urlcolor=blue
+]{hyperref}
+
+%---------------------------------------
+% Otros paquetes
+%---------------------------------------
+\usepackage{multicol}
+\usepackage{titling}
+\usepackage{anyfontsize}

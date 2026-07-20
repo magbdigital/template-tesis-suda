@@ -1,0 +1,41 @@
+# ==========================================
+# Archivos auxiliares generados por LaTeX
+# ==========================================
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.out
+*.idx
+*.ilg
+*.ind
+*.nav
+*.snm
+*.vrb
+*.dvi
+*.ps
+
+# Archivos temporales de compiladores locales / editores
+*.fdb_latexmk
+.vscode/
+.idea/
+*.bak
+*.sav
+
+# ==========================================
+# Archivo de salida (PDF)
+# ==========================================
+# Si deseas ignorar el PDF generado para que no pese en el repositorio Git:
+*.pdf
+
+# NOTA: Si prefieres SÍ guardar el PDF final en GitHub/Git, 
+# comenta o borra la línea de '*.pdf' agregando un '#' al inicio.

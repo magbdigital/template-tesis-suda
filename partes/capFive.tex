@@ -1,0 +1,452 @@
+\chapter{Propuesta}
+
+\section{Arquitectura de la Solución}
+
+La arquitectura propuesta para la aplicación web de gestión de proformas de Confort Muebles se basa en una arquitectura de software de tres capas, conformada por la capa de presentación (Frontend), la capa de lógica de negocio (Backend) y la capa de persistencia de datos (Base de Datos). Esta estructura permite separar las responsabilidades de cada componente, facilitando el mantenimiento, la escalabilidad, la seguridad y la reutilización del código.
+
+La Figura \ref{fig:arquitectura_solucion} muestra la arquitectura general implementada para el desarrollo del sistema.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{imgs/arquitecrura .drawio.png}
+    \caption{Arquitectura de la solución propuesta}
+    \label{fig:arquitectura_solucion}
+\end{figure}
+
+ El sistema inicia con el acceso del administrador desde un computador, laptop o dispositivo móvil utilizando un navegador web. El usuario interactúa con el sistema mediante una interfaz desarrollada en Angular la cual proporciona una experiencia de navegación rápida, dinámica y responsiva.
+
+El frontend está conformado por componentes de interfaz, módulos de navegación, servicios HTTP, validaciones en el cliente y mecanismos de gestión del estado de la aplicación. Estos elementos permiten capturar la información ingresada por el usuario y enviarla hacia el servidor mediante peticiones HTTP/HTTPS utilizando formato JSON.
+
+Las solicitudes son recibidas por el backend desarrollado con NestJS, el cual implementa una API RESTful organizada de forma modular. En esta capa se encuentran los controladores encargados de recibir las peticiones, los servicios que implementan la lógica del negocio, los módulos funcionales del sistema (clientes, productos, proformas, liquidaciones e inventario), los repositorios que gestionan el acceso a la base de datos mediante Prisma ORM y los mecanismos de seguridad basados en autenticación JWT, roles y permisos.
+
+Posteriormente, el backend establece comunicación con la base de datos PostgreSQL alojada en la plataforma Neon.tech, donde se almacena de forma centralizada toda la información correspondiente a clientes, productos, grupos, proformas, liquidaciones e inventario. La utilización de una base de datos en la nube garantiza disponibilidad, respaldo de la información y acceso seguro desde cualquier ubicación autorizada.
+
+Asimismo, la arquitectura incorpora servicios transversales que fortalecen el funcionamiento del sistema, entre los que se incluyen la comunicación segura mediante HTTPS, autenticación de usuarios, registro de eventos y errores (logs), respaldos automáticos de la base de datos y monitoreo del rendimiento de la aplicación. Estos servicios incrementan la confiabilidad, disponibilidad y seguridad de la solución propuesta.
+
+La comunicación entre las diferentes capas del sistema se realiza mediante una arquitectura cliente-servidor utilizando servicios REST sobre el protocolo HTTP/HTTPS. Cada operación ejecutada por el usuario, como registrar, consultar, actualizar o eliminar información, genera una solicitud HTTP enviada desde el frontend hacia la API desarrollada en NestJS. Una vez procesada la petición y aplicadas las reglas de negocio correspondientes, el servidor devuelve una respuesta en formato JSON, la cual es interpretada por el frontend para actualizar la interfaz de usuario.
+
+Este esquema de comunicación desacoplada permite que cada componente evolucione de manera independiente, facilita el mantenimiento del sistema, simplifica futuras integraciones con otras aplicaciones y favorece la escalabilidad de la solución tecnológica implementada.
+
+\section{Justificación de la Propuesta}
+
+Los resultados obtenidos durante el diagnóstico inicial, presentados en el Capítulo 4, evidenciaron que la elaboración de una proforma en la fábrica Confort Muebles requiere entre veinte y cuarenta minutos, debido a que el cálculo del precio de venta se realiza manualmente considerando materiales, mano de obra y porcentaje de utilidad. Asimismo, se identificaron errores recurrentes relacionados con precios, cantidades y materiales, además de pérdidas ocasionales de información ocasionadas por la inexistencia de una base de datos centralizada.
+
+Estas deficiencias afectan directamente la eficiencia de los procesos administrativos y comerciales de la empresa, incrementando los tiempos de atención al cliente, dificultando el seguimiento de las cotizaciones y limitando la disponibilidad de información confiable para la toma de decisiones. Del mismo modo, la gestión manual de los registros incrementa la probabilidad de errores humanos y dificulta el control adecuado de clientes, productos, inventario y liquidaciones.
+
+En respuesta a esta problemática, la presente propuesta plantea el desarrollo e implementación de una aplicación web que automatiza el proceso de gestión de proformas, centraliza la información en una única base de datos y optimiza el flujo de trabajo administrativo mediante una arquitectura de software basada en tecnologías modernas como Angular, NestJS y PostgreSQL.
+
+La solución desarrollada permite reducir significativamente el tiempo requerido para elaborar una proforma, disminuir la ocurrencia de errores en los registros, mejorar la organización de la información y facilitar el acceso a los datos desde cualquier dispositivo con conexión a Internet. Además, incorpora funcionalidades para la administración de clientes, productos, inventario, liquidaciones y reportes administrativos, proporcionando una herramienta integral para el control de las actividades comerciales de la empresa.
+
+En consecuencia, la propuesta responde directamente a las necesidades identificadas durante la fase de diagnóstico y se encuentra alineada con los objetivos de la investigación, contribuyendo a la modernización de los procesos administrativos de Confort Muebles mediante la automatización, la centralización de la información y el fortalecimiento de la toma de decisiones basada en datos confiables.
+\section{Objetivos de la Propuesta}
+
+La propuesta consiste en el diseño e implementación de una aplicación web orientada a automatizar el control de proformas en la fábrica Confort Muebles de la ciudad de Cuenca, con el propósito de optimizar los procesos administrativos, mejorar la organización de la información y reducir los tiempos de atención al cliente.
+
+\subsection{Objetivo General}
+
+Implementar una aplicación web para la automatización del control de proformas en la fábrica Confort Muebles de la ciudad de Cuenca.
+
+\subsection{Objetivos Específicos}
+
+\begin{enumerate}
+    \item Analizar los procesos actuales de gestión de proformas, clientes e inventario en la fábrica Confort Muebles, con el fin de identificar los requerimientos funcionales y no funcionales del sistema.
+
+    \item Diseñar la arquitectura de software y el modelo de base de datos de la aplicación web, conforme a los requerimientos identificados durante el diagnóstico inicial.
+
+    \item Implementar los módulos de autenticación, clientes, productos, proformas, liquidaciones e inventario, incorporando el cálculo automático del subtotal, IVA y total, así como el envío automatizado de proformas a los clientes.
+
+    \item Evaluar el funcionamiento de la aplicación web mediante la comparación de los resultados obtenidos en el pretest y el postest, con el propósito de validar las mejoras alcanzadas en los procesos administrativos de la empresa.
+\end{enumerate}
+\subsection{Tecnologías Utilizadas}
+
+Para el desarrollo de la aplicación web se seleccionaron tecnologías modernas que permiten construir un sistema seguro, escalable y de fácil mantenimiento. Cada una de ellas cumple una función específica dentro de la arquitectura de software implementada.
+
+\begin{itemize}
+
+\item \textbf{Angular 17+ (Frontend):} Framework desarrollado por Google para la creación de aplicaciones web de una sola página (SPA). Su arquitectura basada en componentes facilita el desarrollo de interfaces dinámicas, reutilizables y responsivas, además de incorporar herramientas para el enrutamiento, validación de formularios y consumo de servicios REST.
+
+\item \textbf{Tailwind CSS v4 (Estilos):} Framework de estilos basado en clases utilitarias que permite desarrollar interfaces modernas y adaptables a diferentes tamaños de pantalla, reduciendo la cantidad de código CSS personalizado y acelerando el desarrollo de la interfaz de usuario.
+
+\item \textbf{NestJS (Backend):} Framework de Node.js construido sobre TypeScript que utiliza una arquitectura modular basada en controladores, servicios y módulos. Facilita la organización del código, la implementación de la lógica de negocio y el desarrollo de APIs REST escalables y mantenibles.
+
+\item \textbf{Prisma ORM:} Herramienta de mapeo objeto-relacional (ORM) que permite interactuar con la base de datos mediante modelos tipados, simplificando las operaciones CRUD, las migraciones de la base de datos y la validación del esquema de información.
+
+\item \textbf{PostgreSQL (Base de datos):} Sistema gestor de bases de datos relacional utilizado para almacenar la información de clientes, productos, proformas, liquidaciones e inventario. Ofrece soporte para transacciones, integridad referencial y un alto rendimiento en el manejo de grandes volúmenes de datos.
+
+\item \textbf{Neon.tech (Hosting de Base de Datos):} Plataforma en la nube basada en PostgreSQL que proporciona alta disponibilidad, respaldos automáticos, escalabilidad y acceso remoto seguro a la información almacenada por la aplicación.
+
+\item \textbf{JWT (JSON Web Token):} Tecnología empleada para implementar la autenticación y autorización de usuarios. Permite proteger los recursos del sistema mediante tokens seguros, validando la identidad del usuario y controlando el acceso a las diferentes funcionalidades de la aplicación.
+
+\item \textbf{API RESTful sobre HTTPS:} Modelo de comunicación utilizado entre el frontend y el backend mediante peticiones HTTP seguras. Este mecanismo permite intercambiar información en formato JSON garantizando la interoperabilidad entre los componentes del sistema.
+
+\item \textbf{Librería para generación de documentos PDF:} Componente utilizado en el backend para generar automáticamente las proformas en formato PDF, facilitando su almacenamiento, impresión y envío a los clientes.
+
+\item \textbf{API de WhatsApp Business y Nodemailer:} Herramientas empleadas para automatizar el envío de proformas generadas por el sistema a través de WhatsApp o correo electrónico, mejorando la comunicación con los clientes y reduciendo los tiempos de entrega.
+
+\item \textbf{Git y GitHub (Control de versiones):} Tecnologías utilizadas para gestionar el código fuente del proyecto, mantener un historial de cambios, facilitar el trabajo colaborativo y asegurar el control de versiones durante el desarrollo de la aplicación.
+
+\end{itemize}
+\subsection{Metodología de Desarrollo}
+
+El desarrollo de la aplicación web se realizó utilizando la metodología ágil \textbf{Scrum}, debido a que permite organizar el trabajo en iteraciones cortas denominadas sprints, facilitando la entrega incremental de funcionalidades y la incorporación de mejoras conforme avanzó el desarrollo del proyecto. Esta metodología favorece la planificación, el seguimiento continuo de las actividades y la adaptación a nuevos requerimientos identificados durante la implementación.
+
+Para la ejecución del proyecto se definieron los principales roles establecidos por Scrum:
+
+\begin{itemize}
+
+\item \textbf{Product Owner:} Representado por el administrador de Confort Muebles, quien proporcionó los requerimientos funcionales de la aplicacion web, estableció las prioridades de desarrollo y validó las funcionalidades implementadas de acuerdo con las necesidades de la empresa.
+
+\item \textbf{Scrum Master:} Representado por la autora del proyecto, responsable de coordinar el desarrollo de la aplicación, planificar las actividades, supervisar el cumplimiento de los objetivos de cada sprint y garantizar la correcta aplicación de la metodología Scrum durante todo el proceso.
+
+\item \textbf{Equipo de Desarrollo:} Integrado por la autora del proyecto, quien asumió las actividades de análisis, diseño, desarrollo, pruebas e implementación de la aplicación web utilizando las tecnologías seleccionadas.
+
+\end{itemize}
+
+El desarrollo de la aplicacion se organizó en diferentes sprints, en los cuales se implementaron progresivamente los módulos de autenticación, clientes, productos, proformas y liquidaciones. Al finalizar cada sprint se verificó el correcto funcionamiento de las funcionalidades desarrolladas mediante pruebas de integración y validación con el usuario, permitiendo identificar oportunidades de mejora antes de continuar.
+
+La utilización de Scrum permitió mantener un desarrollo ordenado, flexible y orientado a los requerimientos de la empresa, garantizando la entrega gradual de una aplicacion web funcional y facilitando la incorporación de mejoras durante todo el ciclo de desarrollo.
+\subsection{Product Backlog}
+
+El Product Backlog reúne las historias de usuario obtenidas a partir del análisis de los requerimientos funcionales de la aplicación web. Cada historia describe una necesidad del usuario, los criterios de aceptación, la prioridad y la estimación en puntos de historia utilizando la secuencia de Fibonacci.
+
+\subsubsection*{HU01. Inicio de sesión}
+
+\textbf{Historia de usuario}
+
+Como administrador, quiero iniciar sesión con usuario y contraseña para acceder de forma segura al sistema.
+
+\textbf{Criterios de aceptación}
+
+\begin{itemize}
+    \item El sistema valida las credenciales del usuario.
+    \item Se genera un token JWT al iniciar sesión correctamente.
+    \item Se rechaza el acceso cuando las credenciales son incorrectas.
+\end{itemize}
+
+\textbf{Prioridad:} Alta.
+
+\textbf{Estimación:} 3 puntos de historia.
+
+\vspace{0.5cm}
+
+\subsubsection*{HU02. Gestión de roles y permisos}
+
+\textbf{Historia de usuario}
+
+Como administrador, quiero asignar roles y permisos a los usuarios del sistema para controlar el acceso a los diferentes módulos.
+
+\textbf{Criterios de aceptación}
+
+\begin{itemize}
+    \item Existen al menos dos roles: Administrador y Vendedor.
+    \item Cada rol posee permisos específicos según el módulo.
+\end{itemize}
+
+\textbf{Prioridad:} Alta.
+
+\textbf{Estimación:} 5 puntos de historia.
+
+\vspace{0.5cm}
+
+\subsubsection*{HU03. Expiración de sesión}
+
+\textbf{Historia de usuario}
+
+Como usuario del sistema, quiero que mi sesión expire automáticamente después de un período de inactividad para evitar accesos no autorizados.
+
+\textbf{Criterios de aceptación}
+
+\begin{itemize}
+    \item El token expira automáticamente.
+    \item El sistema solicita nuevamente la autenticación.
+\end{itemize}
+
+\textbf{Prioridad:} Media.
+
+\textbf{Estimación:} 2 puntos de historia.
+
+\vspace{0.5cm}
+
+\subsubsection*{HU04. Registro de clientes}
+
+\textbf{Historia de usuario}
+
+Como administrador, quiero registrar los datos de un cliente para asociarlos a sus proformas.
+
+\textbf{Criterios de aceptación}
+
+\begin{itemize}
+    \item El formulario valida los campos obligatorios.
+    \item La información se almacena correctamente en la base de datos.
+\end{itemize}
+
+\textbf{Prioridad:} Alta.
+
+\textbf{Estimación:} 3 puntos de historia.
+\subsection{Sprint Planning}
+
+Con base en la priorización del Product Backlog, el desarrollo de la aplicación web se organizó mediante la metodología Scrum en cinco sprints, cada uno con una duración de dos semanas. La planificación se realizó considerando la dependencia entre las funcionalidades y la complejidad de las historias de usuario, permitiendo una implementación incremental de la aplicacion.
+
+\subsubsection*{Sprint 1. Seguridad y configuración inicial}
+
+El primer sprint tuvo como objetivo establecer la estructura inicial del sistema e implementar los mecanismos de autenticación y control de acceso.
+
+\textbf{Historias de usuario desarrolladas}
+
+\begin{itemize}
+    \item HU01. Inicio de sesión.
+    \item HU02. Gestión de roles y permisos.
+    \item HU03. Expiración automática de la sesión.
+    \item HU19. Registro de acciones del sistema (logs).
+    \item HU20. Baja lógica de registros.
+\end{itemize}
+
+\textbf{Estimación:} 16 puntos de historia.
+
+\vspace{0.4cm}
+
+\subsubsection*{Sprint 2. Gestión de clientes, productos e inventario}
+
+Durante este sprint se desarrollaron los módulos necesarios para administrar la información básica utilizada en la generación de proformas.
+
+\textbf{Historias de usuario desarrolladas}
+
+\begin{itemize}
+    \item HU04. Registro de clientes.
+    \item HU05. Consulta del historial de proformas.
+    \item HU06. Edición y baja lógica de clientes.
+    \item HU07. Registro de productos.
+
+\end{itemize}
+
+\textbf{Estimación:} 21 puntos de historia.
+
+\vspace{0.4cm}
+
+\subsubsection*{Sprint 3. Gestión de proformas}
+
+El tercer sprint estuvo orientado al desarrollo del módulo principal de la aplicación, encargado de la generación automática de proformas.
+
+\textbf{Historias de usuario desarrolladas}
+
+\begin{itemize}
+    \item HU10. Creación de proformas.
+    \item HU11. Cálculo automático de subtotal, IVA y total.
+    \item HU12. Generación de proformas en formato PDF.
+    \item HU13. Envío automático de proformas mediante WhatsApp o correo electrónico.
+\end{itemize}
+
+\textbf{Estimación:} 26 puntos de historia.
+
+\vspace{0.4cm}
+
+\subsubsection*{Sprint 4. Liquidaciones y panel principal}
+
+En este sprint se implementaron las funcionalidades relacionadas con el cierre de ventas y la visualización de indicadores del sistema.
+
+\textbf{Historias de usuario desarrolladas}
+
+\begin{itemize}
+    \item HU14. Registro de liquidaciones.
+    \item HU16. Panel principal con indicadores.
+    \item HU17. Navegación mediante menú lateral.
+\end{itemize}
+
+\textbf{Estimación:} 16 puntos de historia.
+
+\vspace{0.4cm}
+
+\subsubsection*{Sprint 5. Reportes y pruebas finales}
+
+El último sprint estuvo destinado a la generación de reportes administrativos y a la estabilización de la aplicación mediante pruebas funcionales e integración.
+
+\textbf{Historias de usuario desarrolladas}
+
+\begin{itemize}
+    \item HU18. Generación de reportes.
+    \item Ejecución de pruebas funcionales.
+    \item Corrección de errores detectados.
+    \item Ajustes finales de la interfaz y optimización del rendimiento.
+\end{itemize}
+
+\textbf{Estimación:} 5 puntos de historia más actividades de refinamiento y estabilización..
+\subsection{Sprint Development}
+
+El desarrollo de la aplicación web se realizó mediante cinco sprints, ejecutados de forma secuencial conforme a la planificación establecida. Durante cada sprint se implementaron las historias de usuario priorizadas, realizando actividades de análisis, desarrollo, pruebas y validación con el objetivo de entregar incrementos funcionales del sistema.
+
+\subsubsection*{Sprint 1. Seguridad y configuración del sistema}
+
+Durante el primer sprint se implementó la estructura inicial de la aplicación, configurando el proyecto tanto del frontend como del backend. Asimismo, se desarrolló el módulo de autenticación mediante JWT, la administración de roles y permisos, el control de expiración de sesiones y el registro de acciones realizadas por los usuarios. Finalmente, se implementó el mecanismo de baja lógica para conservar la integridad de la información almacenada.
+
+\textbf{Resultado obtenido}
+
+Se obtuvo un sistema con autenticación segura, control de acceso por roles y mecanismos básicos de seguridad para el resto del desarrollo.
+
+\vspace{0.5cm}
+
+\subsubsection*{Sprint 2. Gestión de clientes, productos e inventario}
+
+En el segundo sprint se desarrollaron los módulos encargados de administrar la información de clientes, productos e inventario. Se implementaron las operaciones de registro, consulta, actualización y baja lógica, además del control del stock disponible y las alertas por inventario mínimo.
+
+\textbf{Resultado obtenido}
+
+Se obtuvo un módulo administrativo completamente funcional para gestionar la información necesaria para la elaboración de las proformas.
+
+\vspace{0.5cm}
+
+\subsubsection*{Sprint 3. Gestión de proformas}
+
+Durante este sprint se implementó el módulo principal del sistema, permitiendo crear proformas mediante la selección de productos y cantidades. Además, se incorporó el cálculo automático del subtotal, IVA y total, así como la generación del documento en formato PDF y su envío al cliente mediante correo electrónico o WhatsApp.
+
+\textbf{Resultado obtenido}
+
+El sistema permitió automatizar completamente el proceso de elaboración de proformas, reduciendo significativamente el tiempo requerido para generar una cotización.
+
+\vspace{0.5cm}
+
+\subsubsection*{Sprint 4. Liquidaciones y panel principal}
+
+En el cuarto sprint se desarrolló el módulo de liquidaciones para registrar las ventas realizadas y controlar el estado de los pagos. También se implementó el panel principal (Dashboard), el cual presenta indicadores relevantes sobre clientes, proformas y ventas.
+
+\textbf{Resultado obtenido}
+
+Se obtuvo una herramienta administrativa que facilita el seguimiento de las ventas y proporciona información relevante para la toma de decisiones.
+
+\vspace{0.5cm}
+
+\subsubsection*{Sprint 5. Reportes y pruebas finales}
+
+El último sprint estuvo orientado al desarrollo de los reportes administrativos y a la realización de pruebas funcionales, pruebas de integración y corrección de errores detectados durante el proceso de validación. Finalmente, se optimizó el rendimiento general de la aplicación antes de su implementación.
+
+\textbf{Resultado obtenido}
+
+Se obtuvo una aplicación web estable, funcional y preparada para su utilización en la gestión de proformas de la empresa Confort Muebles.
+\subsection{Sprint Review}
+
+Al finalizar cada sprint se llevó a cabo una reunión de revisión (\textit{Sprint Review}), en la cual se presentó al administrador de Confort Muebles el incremento funcional desarrollado durante la iteración. El objetivo de estas revisiones fue verificar que las funcionalidades implementadas cumplieran con los requerimientos definidos en el Product Backlog y recopilar observaciones para mejorar el sistema en los siguientes sprints.
+
+\subsubsection*{Sprint 1}
+
+Se presentó el módulo de autenticación y seguridad, incluyendo el inicio de sesión, la administración de roles y permisos, la expiración automática de sesiones y el registro de acciones realizadas por los usuarios.
+
+\textbf{Resultado de la revisión}
+
+El administrador validó el correcto funcionamiento de los mecanismos de seguridad y aprobó el incremento desarrollado, sugiriendo únicamente ajustes menores en la interfaz de inicio de sesión.
+
+\vspace{0.5cm}
+
+\subsubsection*{Sprint 2}
+
+Se demostraron los módulos de gestión de clientes, productos e inventario, verificando las operaciones de registro, consulta, actualización y baja lógica, así como el control del stock disponible y las alertas por inventario mínimo.
+
+\textbf{Resultado de la revisión}
+
+Las funcionalidades fueron aceptadas por el Product Owner al cumplir con los requerimientos establecidos. Se recomendó optimizar la visualización de algunos formularios para facilitar el ingreso de información.
+
+\vspace{0.5cm}
+
+\subsubsection*{Sprint 3}
+
+Se presentó el módulo de proformas, incluyendo la creación de cotizaciones, el cálculo automático del subtotal, IVA y total, la generación del documento en formato PDF y el envío automático al cliente mediante correo electrónico o WhatsApp.
+
+\textbf{Resultado de la revisión}
+
+El administrador verificó que los cálculos realizados por el sistema coincidían con los procedimientos utilizados por la empresa y aprobó el funcionamiento del módulo de proformas.
+
+\vspace{0.5cm}
+
+\subsubsection*{Sprint 4}
+
+Se revisó el módulo de liquidaciones, el control del estado de los pagos y el panel principal (Dashboard), el cual muestra indicadores relacionados con clientes, proformas, inventario y ventas.
+
+\textbf{Resultado de la revisión}
+
+El incremento fue aceptado al proporcionar información útil para el seguimiento de las operaciones administrativas y apoyar la toma de decisiones dentro de la empresa.
+
+\vspace{0.5cm}
+
+\subsubsection*{Sprint 5}
+
+Se presentaron los reportes administrativos, las mejoras incorporadas durante el proceso de desarrollo y los resultados obtenidos en las pruebas funcionales e integración realizadas sobre la aplicación.
+
+\textbf{Resultado de la revisión}
+
+El Product Owner aprobó la versión final del sistema al comprobar que las funcionalidades implementadas satisfacen los requerimientos planteados al inicio del proyecto. Asimismo, se confirmó que la aplicación contribuye a reducir los tiempos de elaboración de proformas, disminuir errores en los registros y mejorar la gestión de la información en Confort Muebles.
+
+
+
+
+
+\subsection{Sprint Retrospective}
+
+Al finalizar cada sprint se realizó una reunión de retrospectiva (\textit{Sprint Retrospective}), cuyo propósito fue analizar el proceso de desarrollo, identificar los aspectos positivos, las dificultades encontradas y las oportunidades de mejora para la siguiente iteración. Esta actividad permitió optimizar la organización del trabajo y mejorar continuamente la calidad de la aplicación web.
+
+\subsubsection*{Sprint 1}
+
+Durante el primer sprint se identificó que la planificación inicial permitió establecer una base sólida para el desarrollo del sistema. Sin embargo, fue necesario realizar ajustes en la configuración del entorno de desarrollo y en la integración entre el frontend y el backend.
+
+\textbf{Lecciones aprendidas}
+
+\begin{itemize}
+    \item La correcta planificación inicial facilita el desarrollo de los siguientes módulos.
+    \item Es importante verificar la configuración de las herramientas antes de iniciar la implementación.
+    \item La comunicación constante con el Product Owner permitió aclarar los requerimientos de autenticación y seguridad.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\subsubsection*{Sprint 2}
+
+Durante el desarrollo de los módulos de clientes, productos e inventario se identificó la necesidad de mejorar las validaciones de los formularios y optimizar la estructura de algunos componentes reutilizables.
+
+\textbf{Lecciones aprendidas}
+
+\begin{itemize}
+    \item La reutilización de componentes reduce el tiempo de desarrollo.
+    \item Las validaciones tempranas disminuyen la aparición de errores durante las pruebas.
+    \item La organización modular del código facilita el mantenimiento del sistema.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\subsubsection*{Sprint 3}
+
+El desarrollo del módulo de proformas permitió automatizar el cálculo de los valores económicos y la generación de documentos PDF. Durante esta etapa se realizaron pruebas para verificar la exactitud de los cálculos.
+
+\textbf{Lecciones aprendidas}
+
+\begin{itemize}
+    \item Las pruebas funcionales permitieron detectar errores antes de la entrega del incremento.
+    \item La automatización del cálculo reduce significativamente los errores humanos.
+    \item La validación continua con el Product Owner aseguró que el módulo cumpliera con los requerimientos establecidos.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\subsubsection*{Sprint 4}
+
+Durante este sprint se implementaron el módulo de liquidaciones y el panel principal del sistema. Se realizaron ajustes en la presentación de los indicadores para mejorar la experiencia del usuario.
+
+\textbf{Lecciones aprendidas}
+
+\begin{itemize}
+    \item Los indicadores visuales facilitan el análisis de la información administrativa.
+    \item La retroalimentación del usuario permitió mejorar la interfaz del Dashboard.
+    \item Una arquitectura modular facilita la incorporación de nuevas funcionalidades.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\subsubsection*{Sprint 5}
+
+En el último sprint se realizaron pruebas funcionales, pruebas de integración y correcciones finales del sistema antes de su implementación. Asimismo, se optimizó el rendimiento general de la aplicación.
+
+\textbf{Lecciones aprendidas}
+
+\begin{itemize}
+    \item Las pruebas finales incrementan la estabilidad y confiabilidad del sistema.
+    \item La corrección oportuna de errores mejora la calidad del producto entregado.
+    \item La metodología Scrum permitió organizar el desarrollo de forma incremental, facilitando la adaptación a los requerimientos y la entrega de una aplicación web funcional.
+\end{itemize}
+
+Como resultado de las retrospectivas realizadas al finalizar cada sprint, fue posible identificar oportunidades de mejora en la planificación, el desarrollo y las pruebas del sistema. La aplicación de la metodología Scrum contribuyó a mantener un proceso de desarrollo ordenado, colaborativo y orientado a la entrega continua de valor, permitiendo obtener una solución que satisface los requerimientos funcionales y no funcionales de la fábrica Confort Muebles.

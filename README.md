@@ -9,7 +9,7 @@ Instrucciones para configurar un entorno de desarrollo local en Windows para la 
 Para procesar y compilar archivos `.tex` en Windows, se requiere un motor ejecutable. En este caso utilizaremos **MiKTeX**.
 
 * **Descarga:** [Página oficial de MiKTeX](https://miktex.org/download)
-* *Nota:* Sigue el asistente de instalación recomendado de forma predeterminada.
+* **Configuración clave durante la instalación:** En la pantalla donde el instalador pregunta sobre la instalación de paquetes faltantes (*"Auto-install missing packages"*), selecciona la opción **"Yes"** (o *"Always"*). Esto evitará que aparezcan ventanas emergentes pidiendo confirmación manual cada vez que tu documento requiera un paquete nuevo.
 
 ---
 

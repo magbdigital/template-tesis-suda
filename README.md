@@ -35,7 +35,4 @@ Para gestionar la automatización de referencias y compilaciones avanzadas (como
 
 Abre **PowerShell** como administrador y ejecuta el siguiente comando:
 
-```powershell
-winget install StrawberryPerl.StrawberryPerl```
-
-Nota útil para la redacción: Al escribir párrafos largos en LaTeX dentro de VS Code, puedes presionar Alt + Z  para activar el ajuste de línea (Word Wrap). Esto hará que el texto se adapte al ancho visible de la ventana sin insertar saltos de línea reales en tu archivo.
+```powershell winget install StrawberryPerl.StrawberryPerl```

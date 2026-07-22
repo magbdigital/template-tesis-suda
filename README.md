@@ -1,24 +1,39 @@
-# Preparar equipo para compilar tex
+# Guía de Configuración: Entorno de Compilación LaTeX (Local)
 
-## 1. Descargar un compilador
+Instrucciones para configurar un entorno de desarrollo local en Windows para la edición y compilación de documentos LaTeX.
 
-En este caso usaremos miktex que es el compilador mas usado para Windows.
-Descarcar desde: https://miktex.org/download
+---
 
-## 2. Edición de documentos Latex
-### 2. Edición con Texworks
+## 1. Instalación del Compilador (Motor LaTeX)
 
-Un editor muy versátil es TeXworks, tiene una  interface basica para redactar documentos
-Descargar desde aqui: https://tug.org/texworks/
+Para procesar y compilar archivos `.tex` en Windows, se requiere un motor ejecutable. En este caso utilizaremos **MiKTeX**.
 
-### 2.1. Edición con visual studio code.
+* **Descarga:** [Página oficial de MiKTeX](https://miktex.org/download)
+* *Nota:* Sigue el asistente de instalación recomendado de forma predeterminada.
 
-Para las personas con conocimiento de Visual Studio Code puede usarlo para escribir en Latex.
-#### 2.1.1 Plugin
-Instalar un pluging: LaTeX Workshop
-Fijarse que el autor:james yu
-#### 2.1.2 Entorno de ejecución 
-Tambien se requiere instalar `StrawberryPerl.StrawberryPerl` para gestionar las compilaciones.
-Para ello abrir PowerShell y ejecutar como administrador la siguiente línea:
-`winget install StrawberryPerl.StrawberryPerl`
+---
 
+## 2. Editores de Texto y Entornos recomendados
+
+Puedes elegir cualquiera de las siguientes alternativas según tu preferencia:
+
+### Opción A: TeXworks (Liviano y Sencillo)
+Es un editor liviano y con una interfaz básica e intuitiva, ideal para proyectos sencillos o inicios rápidos.
+
+* **Descarga:** [Página oficial de TeXworks](https://tug.org/texworks/)
+
+### Opción B: Visual Studio Code (Recomendado para uso avanzado)
+Si ya utilizas Visual Studio Code, puedes configurarlo como tu entorno principal para redactar LaTeX.
+
+#### 1. Extensión requerida
+Instala la extensión principal para el soporte de lenguaje:
+* **Nombre:** `LaTeX Workshop`
+* **Autor:** *James Yu*
+
+#### 2. Dependencia del entorno (Strawberry Perl)
+Para gestionar la automatización de referencias y compilaciones avanzadas (como `latexmk`), se requiere el ejecutable de Perl.
+
+Abre **PowerShell** como administrador y ejecuta el siguiente comando:
+
+```powershell
+winget install StrawberryPerl.StrawberryPerl

@@ -106,272 +106,113 @@ El desarrollo de la aplicacion se organizó en diferentes sprints, en los cuales
 
 La utilización de Scrum permitió mantener un desarrollo ordenado, flexible y orientado a los requerimientos de la empresa, garantizando la entrega gradual de una aplicacion web funcional y facilitando la incorporación de mejoras durante todo el ciclo de desarrollo.
 \subsection{Product Backlog}
+\begin{table}[H]
+\centering
+\caption{Historias de Usuario del Product Backlog}
+\label{tab:product_backlog}
+\begin{tabular}{@{}p{1.3cm}p{4.5cm}p{4.5cm}p{1.5cm}p{1.8cm}@{}}
+\toprule
+\textbf{Código} & \textbf{Historia de usuario} & \textbf{Criterios de aceptación} & \textbf{Prioridad} & \textbf{Estimación} \\
+\midrule
+HU01 & Como administrador, quiero iniciar sesión con usuario y contraseña para acceder de forma segura al sistema. & 
+El sistema valida las credenciales del usuario. Se genera un token JWT al iniciar sesión correctamente. Se rechaza el acceso cuando las credenciales son incorrectas. & 
+Alta & 3 pts \\
+\midrule
+HU02 & Como administrador, quiero asignar roles y permisos a los usuarios del sistema para controlar el acceso a los diferentes módulos. & 
+Existen al menos dos roles: Administrador y Vendedor. Cada rol posee permisos específicos según el módulo. & 
+Alta & 5 pts \\
+\midrule
+HU03 & Como usuario del sistema, quiero que mi sesión expire automáticamente después de un período de inactividad para evitar accesos no autorizados. & 
+El token expira automáticamente. El sistema solicita nuevamente la autenticación. & 
+Media & 2 pts \\
+\midrule
+HU04 & Como administrador, quiero registrar los datos de un cliente para asociarlos a sus proformas. & 
+El formulario valida los campos obligatorios. La información se almacena correctamente en la base de datos. & 
+Alta & 3 pts \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-El Product Backlog reúne las historias de usuario obtenidas a partir del análisis de los requerimientos funcionales de la aplicación web. Cada historia describe una necesidad del usuario, los criterios de aceptación, la prioridad y la estimación en puntos de historia utilizando la secuencia de Fibonacci.
-
-\subsubsection*{HU01. Inicio de sesión}
-
-\textbf{Historia de usuario}
-
-Como administrador, quiero iniciar sesión con usuario y contraseña para acceder de forma segura al sistema.
-
-\textbf{Criterios de aceptación}
-
-\begin{itemize}
-    \item El sistema valida las credenciales del usuario.
-    \item Se genera un token JWT al iniciar sesión correctamente.
-    \item Se rechaza el acceso cuando las credenciales son incorrectas.
-\end{itemize}
-
-\textbf{Prioridad:} Alta.
-
-\textbf{Estimación:} 3 puntos de historia.
-
-\vspace{0.5cm}
-
-\subsubsection*{HU02. Gestión de roles y permisos}
-
-\textbf{Historia de usuario}
-
-Como administrador, quiero asignar roles y permisos a los usuarios del sistema para controlar el acceso a los diferentes módulos.
-
-\textbf{Criterios de aceptación}
-
-\begin{itemize}
-    \item Existen al menos dos roles: Administrador y Vendedor.
-    \item Cada rol posee permisos específicos según el módulo.
-\end{itemize}
-
-\textbf{Prioridad:} Alta.
-
-\textbf{Estimación:} 5 puntos de historia.
-
-\vspace{0.5cm}
-
-\subsubsection*{HU03. Expiración de sesión}
-
-\textbf{Historia de usuario}
-
-Como usuario del sistema, quiero que mi sesión expire automáticamente después de un período de inactividad para evitar accesos no autorizados.
-
-\textbf{Criterios de aceptación}
-
-\begin{itemize}
-    \item El token expira automáticamente.
-    \item El sistema solicita nuevamente la autenticación.
-\end{itemize}
-
-\textbf{Prioridad:} Media.
-
-\textbf{Estimación:} 2 puntos de historia.
-
-\vspace{0.5cm}
-
-\subsubsection*{HU04. Registro de clientes}
-
-\textbf{Historia de usuario}
-
-Como administrador, quiero registrar los datos de un cliente para asociarlos a sus proformas.
-
-\textbf{Criterios de aceptación}
-
-\begin{itemize}
-    \item El formulario valida los campos obligatorios.
-    \item La información se almacena correctamente en la base de datos.
-\end{itemize}
-
-\textbf{Prioridad:} Alta.
-
-\textbf{Estimación:} 3 puntos de historia.
 \subsection{Sprint Planning}
 
 Con base en la priorización del Product Backlog, el desarrollo de la aplicación web se organizó mediante la metodología Scrum en cinco sprints, cada uno con una duración de dos semanas. La planificación se realizó considerando la dependencia entre las funcionalidades y la complejidad de las historias de usuario, permitiendo una implementación incremental de la aplicacion.
+\begin{table}[H]
+\centering
+\caption{Planificación de los Sprints (Sprint Planning)}
+\label{tab:sprint_planning}
+\begin{tabular}{@{}p{2cm}p{7.5cm}p{2cm}@{}}
+\toprule
+\textbf{Sprint} & \textbf{Historias de usuario / Actividades} & \textbf{Estimación} \\
+\midrule
+Sprint 1. Seguridad y configuración inicial & 
+HU01. Inicio de sesión \newline
+HU02. Gestión de roles y permisos \newline
+HU03. Expiración automática de la sesión \newline
+HU19. Registro de acciones del sistema (logs) \newline
+HU20. Baja lógica de registros & 
+16 pts \\
+\midrule
+Sprint 2. Gestión de clientes, productos e inventario & 
+HU04. Registro de clientes \newline
+HU05. Consulta del historial de proformas \newline
+HU06. Edición y baja lógica de clientes \newline
+HU07. Registro de productos & 
+21 pts \\
+\midrule
+Sprint 3. Gestión de proformas & 
+HU10. Creación de proformas \newline
+HU11. Cálculo automático de subtotal, IVA y total \newline
+HU12. Generación de proformas en formato PDF \newline
+HU13. Envío automático de proformas mediante WhatsApp o correo electrónico & 
+26 pts \\
+\midrule
+Sprint 4. Liquidaciones y panel principal & 
+HU14. Registro de liquidaciones \newline
+HU16. Panel principal con indicadores \newline
+HU17. Navegación mediante menú lateral & 
+16 pts \\
+\midrule
+Sprint 5. Reportes y pruebas finales & 
+HU18. Generación de reportes \newline
+Ejecución de pruebas funcionales \newline
+Corrección de errores detectados \newline
+Ajustes finales de la interfaz y optimización del rendimiento & 
+5 pts \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-\subsubsection*{Sprint 1. Seguridad y configuración inicial}
 
-El primer sprint tuvo como objetivo establecer la estructura inicial del sistema e implementar los mecanismos de autenticación y control de acceso.
 
-\textbf{Historias de usuario desarrolladas}
 
-\begin{itemize}
-    \item HU01. Inicio de sesión.
-    \item HU02. Gestión de roles y permisos.
-    \item HU03. Expiración automática de la sesión.
-    \item HU19. Registro de acciones del sistema (logs).
-    \item HU20. Baja lógica de registros.
-\end{itemize}
-
-\textbf{Estimación:} 16 puntos de historia.
-
-\vspace{0.4cm}
-
-\subsubsection*{Sprint 2. Gestión de clientes, productos e inventario}
-
-Durante este sprint se desarrollaron los módulos necesarios para administrar la información básica utilizada en la generación de proformas.
-
-\textbf{Historias de usuario desarrolladas}
-
-\begin{itemize}
-    \item HU04. Registro de clientes.
-    \item HU05. Consulta del historial de proformas.
-    \item HU06. Edición y baja lógica de clientes.
-    \item HU07. Registro de productos.
-
-\end{itemize}
-
-\textbf{Estimación:} 21 puntos de historia.
-
-\vspace{0.4cm}
-
-\subsubsection*{Sprint 3. Gestión de proformas}
-
-El tercer sprint estuvo orientado al desarrollo del módulo principal de la aplicación, encargado de la generación automática de proformas.
-
-\textbf{Historias de usuario desarrolladas}
-
-\begin{itemize}
-    \item HU10. Creación de proformas.
-    \item HU11. Cálculo automático de subtotal, IVA y total.
-    \item HU12. Generación de proformas en formato PDF.
-    \item HU13. Envío automático de proformas mediante WhatsApp o correo electrónico.
-\end{itemize}
-
-\textbf{Estimación:} 26 puntos de historia.
-
-\vspace{0.4cm}
-
-\subsubsection*{Sprint 4. Liquidaciones y panel principal}
-
-En este sprint se implementaron las funcionalidades relacionadas con el cierre de ventas y la visualización de indicadores del sistema.
-
-\textbf{Historias de usuario desarrolladas}
-
-\begin{itemize}
-    \item HU14. Registro de liquidaciones.
-    \item HU16. Panel principal con indicadores.
-    \item HU17. Navegación mediante menú lateral.
-\end{itemize}
-
-\textbf{Estimación:} 16 puntos de historia.
-
-\vspace{0.4cm}
-
-\subsubsection*{Sprint 5. Reportes y pruebas finales}
-
-El último sprint estuvo destinado a la generación de reportes administrativos y a la estabilización de la aplicación mediante pruebas funcionales e integración.
-
-\textbf{Historias de usuario desarrolladas}
-
-\begin{itemize}
-    \item HU18. Generación de reportes.
-    \item Ejecución de pruebas funcionales.
-    \item Corrección de errores detectados.
-    \item Ajustes finales de la interfaz y optimización del rendimiento.
-\end{itemize}
-
-\textbf{Estimación:} 5 puntos de historia más actividades de refinamiento y estabilización..
-\subsection{Sprint Development}
-
-El desarrollo de la aplicación web se realizó mediante cinco sprints, ejecutados de forma secuencial conforme a la planificación establecida. Durante cada sprint se implementaron las historias de usuario priorizadas, realizando actividades de análisis, desarrollo, pruebas y validación con el objetivo de entregar incrementos funcionales del sistema.
-
-\subsubsection*{Sprint 1. Seguridad y configuración del sistema}
-
-Durante el primer sprint se implementó la estructura inicial de la aplicación, configurando el proyecto tanto del frontend como del backend. Asimismo, se desarrolló el módulo de autenticación mediante JWT, la administración de roles y permisos, el control de expiración de sesiones y el registro de acciones realizadas por los usuarios. Finalmente, se implementó el mecanismo de baja lógica para conservar la integridad de la información almacenada.
-
-\textbf{Resultado obtenido}
-
-Se obtuvo un sistema con autenticación segura, control de acceso por roles y mecanismos básicos de seguridad para el resto del desarrollo.
-
-\vspace{0.5cm}
-
-\subsubsection*{Sprint 2. Gestión de clientes, productos e inventario}
-
-En el segundo sprint se desarrollaron los módulos encargados de administrar la información de clientes, productos e inventario. Se implementaron las operaciones de registro, consulta, actualización y baja lógica, además del control del stock disponible y las alertas por inventario mínimo.
-
-\textbf{Resultado obtenido}
-
-Se obtuvo un módulo administrativo completamente funcional para gestionar la información necesaria para la elaboración de las proformas.
-
-\vspace{0.5cm}
-
-\subsubsection*{Sprint 3. Gestión de proformas}
-
-Durante este sprint se implementó el módulo principal del sistema, permitiendo crear proformas mediante la selección de productos y cantidades. Además, se incorporó el cálculo automático del subtotal, IVA y total, así como la generación del documento en formato PDF y su envío al cliente mediante correo electrónico o WhatsApp.
-
-\textbf{Resultado obtenido}
-
-El sistema permitió automatizar completamente el proceso de elaboración de proformas, reduciendo significativamente el tiempo requerido para generar una cotización.
-
-\vspace{0.5cm}
-
-\subsubsection*{Sprint 4. Liquidaciones y panel principal}
-
-En el cuarto sprint se desarrolló el módulo de liquidaciones para registrar las ventas realizadas y controlar el estado de los pagos. También se implementó el panel principal (Dashboard), el cual presenta indicadores relevantes sobre clientes, proformas y ventas.
-
-\textbf{Resultado obtenido}
-
-Se obtuvo una herramienta administrativa que facilita el seguimiento de las ventas y proporciona información relevante para la toma de decisiones.
-
-\vspace{0.5cm}
-
-\subsubsection*{Sprint 5. Reportes y pruebas finales}
-
-El último sprint estuvo orientado al desarrollo de los reportes administrativos y a la realización de pruebas funcionales, pruebas de integración y corrección de errores detectados durante el proceso de validación. Finalmente, se optimizó el rendimiento general de la aplicación antes de su implementación.
-
-\textbf{Resultado obtenido}
-
-Se obtuvo una aplicación web estable, funcional y preparada para su utilización en la gestión de proformas de la empresa Confort Muebles.
 \subsection{Sprint Review}
 
 Al finalizar cada sprint se llevó a cabo una reunión de revisión (\textit{Sprint Review}), en la cual se presentó al administrador de Confort Muebles el incremento funcional desarrollado durante la iteración. El objetivo de estas revisiones fue verificar que las funcionalidades implementadas cumplieran con los requerimientos definidos en el Product Backlog y recopilar observaciones para mejorar el sistema en los siguientes sprints.
-
-\subsubsection*{Sprint 1}
-
-Se presentó el módulo de autenticación y seguridad, incluyendo el inicio de sesión, la administración de roles y permisos, la expiración automática de sesiones y el registro de acciones realizadas por los usuarios.
-
-\textbf{Resultado de la revisión}
-
-El administrador validó el correcto funcionamiento de los mecanismos de seguridad y aprobó el incremento desarrollado, sugiriendo únicamente ajustes menores en la interfaz de inicio de sesión.
-
-\vspace{0.5cm}
-
-\subsubsection*{Sprint 2}
-
-Se demostraron los módulos de gestión de clientes, productos e inventario, verificando las operaciones de registro, consulta, actualización y baja lógica, así como el control del stock disponible y las alertas por inventario mínimo.
-
-\textbf{Resultado de la revisión}
-
-Las funcionalidades fueron aceptadas por el Product Owner al cumplir con los requerimientos establecidos. Se recomendó optimizar la visualización de algunos formularios para facilitar el ingreso de información.
-
-\vspace{0.5cm}
-
-\subsubsection*{Sprint 3}
-
-Se presentó el módulo de proformas, incluyendo la creación de cotizaciones, el cálculo automático del subtotal, IVA y total, la generación del documento en formato PDF y el envío automático al cliente mediante correo electrónico o WhatsApp.
-
-\textbf{Resultado de la revisión}
-
-El administrador verificó que los cálculos realizados por el sistema coincidían con los procedimientos utilizados por la empresa y aprobó el funcionamiento del módulo de proformas.
-
-\vspace{0.5cm}
-
-\subsubsection*{Sprint 4}
-
-Se revisó el módulo de liquidaciones, el control del estado de los pagos y el panel principal (Dashboard), el cual muestra indicadores relacionados con clientes, proformas, inventario y ventas.
-
-\textbf{Resultado de la revisión}
-
-El incremento fue aceptado al proporcionar información útil para el seguimiento de las operaciones administrativas y apoyar la toma de decisiones dentro de la empresa.
-
-\vspace{0.5cm}
-
-\subsubsection*{Sprint 5}
-
-Se presentaron los reportes administrativos, las mejoras incorporadas durante el proceso de desarrollo y los resultados obtenidos en las pruebas funcionales e integración realizadas sobre la aplicación.
-
-\textbf{Resultado de la revisión}
-
-El Product Owner aprobó la versión final del sistema al comprobar que las funcionalidades implementadas satisfacen los requerimientos planteados al inicio del proyecto. Asimismo, se confirmó que la aplicación contribuye a reducir los tiempos de elaboración de proformas, disminuir errores en los registros y mejorar la gestión de la información en Confort Muebles.
+\begin{table}[H]
+\centering
+\caption{Resultados de las Revisiones de Sprint (Sprint Review)}
+\label{tab:sprint_review}
+\begin{tabular}{@{}p{1.5cm}p{5cm}p{6.5cm}@{}}
+\toprule
+\textbf{Sprint} & \textbf{Funcionalidades presentadas} & \textbf{Resultado de la revisión} \\
+\midrule
+Sprint 1 & Módulo de autenticación y seguridad: inicio de sesión, administración de roles y permisos, expiración automática de sesiones, registro de acciones de usuarios. & 
+El administrador validó el correcto funcionamiento de los mecanismos de seguridad y aprobó el incremento, sugiriendo ajustes menores en la interfaz de inicio de sesión. \\
+\midrule
+Sprint 2 & Módulos de gestión de clientes, productos e inventario: registro, consulta, actualización, baja lógica, control de stock y alertas por inventario mínimo. & 
+Funcionalidades aceptadas por el Product Owner; se recomendó optimizar la visualización de algunos formularios. \\
+\midrule
+Sprint 3 & Módulo de proformas: creación de cotizaciones, cálculo automático de subtotal, IVA y total, generación de PDF y envío automático por correo o WhatsApp. & 
+El administrador verificó que los cálculos coincidían con los procedimientos de la empresa y aprobó el módulo. \\
+\midrule
+Sprint 4 & Módulo de liquidaciones, control del estado de pagos y panel principal (Dashboard) con indicadores de clientes, proformas, inventario y ventas. & 
+Incremento aceptado al proporcionar información útil para el seguimiento de operaciones y la toma de decisiones. \\
+\midrule
+Sprint 5 & Reportes administrativos, mejoras incorporadas durante el desarrollo y resultados de las pruebas funcionales e integración. & 
+El Product Owner aprobó la versión final del sistema, confirmando que reduce tiempos de elaboración de proformas, disminuye errores y mejora la gestión de información. \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 
 
